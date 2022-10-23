@@ -1,0 +1,109 @@
+
+<h2>Reactives: <small>Switches</small></h2>
+
+<form 
+    [formGroup]="myForm"
+    autocomplete="off">
+
+    <div class="row mb-3">
+        <label 
+            class="col-sm-3 col-form-label">
+            Gender
+        </label>
+        <div class="col-sm-9">
+            <div class="form-check">
+                <input 
+                    formControlName="gender"
+                    class="form-check-input" 
+                    type="radio" 
+                    id="radioMale"
+                    value="M">
+                <label class="form-check-label" for="radioMale">
+                    Male
+                </label>
+              </div>
+              <div class="form-check">
+                <input 
+                    formControlName="gender"
+                    class="form-check-input" 
+                    type="radio" 
+                    id="radioFemale"
+                    value="F">
+                <label class="form-check-label" for="radioFemale">
+                    Female
+                </label>
+              </div>
+        </div>
+
+    </div>
+
+    <div class="row mb-3">
+        <label 
+            class="col-sm-3 col-form-label">
+            Notifications
+        </label>
+        <div class="col-sm-9">
+
+            <div class="form-check form-switch">
+                <input 
+                    formControlName="notifications"
+                    class="form-check-input mt-2" 
+                    type="checkbox"
+                    role="switch" 
+                    id="checkNotifications">
+                <label 
+                    class="form-check-label" 
+                    for="checkNotifications">
+                    I want to receive alerts
+                </label>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-sm-9">
+
+            <div class="form-check">
+                <input 
+                    formControlName="conditions"
+                    class="form-check-input" 
+                    type="checkbox" 
+                    id="checkTerms">
+                <label class="form-check-label" for="checkTerms">
+                    Terms and conditions
+                </label>
+            </div>
+            <span
+                *ngIf="fieldNotValid('conditions')"
+                class="form-text text-danger">
+                You must agree to terms and conditions
+            </span>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <button 
+                (click)="save()"
+                type="submit"
+                class="btn btn-primary float-end">
+                Save
+            </button>
+        </div>
+    </div>
+
+</form>
+
+<h5>Form value</h5>
+<pre>{{myForm.value | json}}</pre>
+<hr>
+
+<h5>Valid</h5>
+<pre>{{myForm.valid | json}}</pre>
+<hr>
+
+
+<h5>Person</h5>
+<pre>{{person | json}}</pre>

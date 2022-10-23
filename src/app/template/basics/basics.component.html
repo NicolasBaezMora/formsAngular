@@ -1,0 +1,106 @@
+<h2>Template: Basics</h2>
+<hr>
+
+<div class="row">
+    <div class="col">
+        <form 
+            (ngSubmit)="save()"
+            #myForm="ngForm">
+
+            <div class="mb-3 row">
+                <label 
+                    class="col-sm-3 col-form-label">
+                    Product
+                </label>
+                <div class="col-sm-9">
+                    <input
+                        [ngModel]="initForm.product"
+                        name="product"
+                        type="text"
+                        autocomplete="off"
+                        class="form-control"
+                        placeholder="Product name"
+                        required="true"
+                        minlength="3">
+                    <span
+                        *ngIf="productNameValid()"
+                        class="form-text text-danger">
+                        Must be have 3 letters
+                    </span>
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label 
+                    class="col-sm-3 col-form-label">
+                    Price
+                </label>
+                <div class="col-sm-9">
+                    <input 
+                        [ngModel]="initForm.price"
+                        name="price"
+                        type="number"
+                        autocomplete="off"
+                        class="form-control"
+                        placeholder="Product price"
+                        autocomplete="off"
+                        required="true"
+                        customMin
+                        [minimum]="0">
+
+                <span
+                    *ngIf="priceValid()"
+                    class="form-text text-danger">
+                    The price must be bigger than 0
+                </span>
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label 
+                    class="col-sm-3 col-form-label">
+                    Stock
+                </label>
+                <div class="col-sm-9">
+                    <input 
+                        [ngModel]="initForm.stock"
+                        name="stock"
+                        type="number"
+                        autocomplete="off"
+                        class="form-control"
+                        placeholder="Product stock"
+                        required="true">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button
+                        [disabled]="myForm.invalid"
+                        type="submit"
+                        class="btn btn-primary float-end">
+                        Save
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <span>Valid</span>
+            <pre>{{myForm.valid}}</pre>
+
+            <span>Pristine</span>
+            <pre>{{myForm.valid}}</pre>
+
+            <span>Touched</span>
+            <pre>{{myForm.touched}}</pre>
+
+            <span>Value</span>
+            <pre>{{myForm.value | json}}</pre>
+        </div>
+    </div>
+
+</div>
